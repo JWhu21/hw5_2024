@@ -1,0 +1,170 @@
+/* Animates the logo with a fade-in effect and growth from a width of 25px to 475px, 
+with opacity increasing from 0 to 1. */
+@keyframes logo {
+    0% { width: 25px; opacity: 0;}
+    100% { width: 475px; opacity: 1;}
+}
+
+#logo {
+  animation: 5s logo; /* Applies the animation defined above to the logo. */
+}
+
+/* Sets up the body with the Poppins font, a background image, 
+and a fallback background color. */
+body {
+    font-family: "Poppins", serif;
+    background-image: url("../images/concrete_seamless.png"); 
+    background-color: #f1f1f1;
+}
+
+/* Styles the header to use a flexbox layout, centering items vertically. */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Sets navigation links to use a flexbox column layout, for mobile or default view. */
+.nav_links {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+/* Ensures links remain red even after being visited, 
+addressing accessibility and visual consistency. */
+a, a:visited {
+    color: red;
+}
+
+/* Styles card headers specifically, with a background, border, padding, and rounded corners. */
+.card > header {
+    background: #288088;
+    border: 2px solid #45ADAD;
+    padding: 20px 0;
+    border-radius: 50px 50px 0 0;
+}
+
+/* Defines the basic appearance of cards including rounded corners 
+and a flex basis for layout adjustments. */
+.card {
+    border-radius: 50px 50px 0 0;
+    flex-basis: 450px;
+}
+
+/* Aligns pricing cards centrally within a flex container, 
+allowing for responsive wrapping. */
+.pricing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 475px;
+}
+
+/* Styles images within the gallery with a border, margin, 
+and fixed width for consistency. */
+.gallery img{
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Applies a flex layout to the gallery, allowing for responsive wrapping of images. */
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+/* Media query for screen sizes larger than 900px to adjust layout for a more desktop-friendly view. */
+@media screen and (min-width:900px) {
+    /* Adjusts the header to display its elements in a row and distribute space between them. */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* Adjusts navigation links to lay out in a row, making better use of space at larger screen widths. */
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+  
+    /* Resizes cards to a flex basis of 275px to ensure uniform width across all cards in larger displays. */
+    .card {
+      flex-basis: 275px;
+    }
+  
+    /* Changes the layout of the pricing section to a row for a horizontal alignment of cards. */
+    .pricing {
+        flex-direction: row;
+    }
+  
+    /* Ensures the top header remains visible at the top of the viewport during scrolling on large screens. */
+    body > header {
+        position: sticky;
+        top: 0;
+    }
+}
+
+/* Media query for users who prefer reduced motion, disabling animations for accessibility. */
+@media (prefers-reduced-motion: reduce) {
+    /* Disables animation on the logo for users who have reduced motion settings enabled. */
+    #logo {
+      animation: none;
+      width: 475px;
+      opacity: 1;
+    }
+}
+
+/* Styles applied when the page is being printed, focusing on readability and saving printer resources. */
+@media print {
+    /* Sets a print-friendly font and removes the background image for better clarity and to save ink. */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-image: none;
+      color: black;
+    }
+  
+    /* Hides the navigation in print mode to focus on the main content. */
+    nav {
+      display: none;
+    }
+
+    /* Adjusts navigation links for print, though it might not be visible as 'nav' is set to 'display: none'. */
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+  
+    /* Aligns pricing cards along the bottom in the print layout for a tidy appearance. */
+    .pricing {
+        align-items: flex-end;
+        flex-direction: row;
+    }
+  
+    /* Adds a border to cards and sets a specific size for uniformity in print. */
+    .card {
+      border: 2px solid #45ADDD;
+      flex-basis: 325px;
+    }
+  
+    /* Ensures the gallery section is not printed, saving space and resources. */
+    .gallery, #gallery {
+        display: none;
+    }
+  
+    /* Removes bullet points from list items within cards for a cleaner print layout. */
+    .card ul {
+      list-style: none;
+    }
+  
+    /* Adds a thumbs-up emoji to the second list item in each card for a playful print-specific detail. */
+    .card li:nth-child(2)::after {
+      content: "👍";
+      color: yellow;
+      padding-right: 5px;
+    }
+}
