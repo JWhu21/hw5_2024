@@ -163,7 +163,7 @@ and fixed width for consistency. */
   
     /* Adds a thumbs-up emoji to the second list item in each card for a playful print-specific detail. */
     .card li:nth-child(2)::after {
-      content: "👍";
+      content: "\01F44D";
       color: yellow;
       padding-right: 5px;
     }
